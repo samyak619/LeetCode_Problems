@@ -1,37 +1,48 @@
 class Solution {
 public:
-    vector<string> commonChars(vector<string>& words) {
-         vector<string> ans;
-        unordered_map<char, int> m;
+	vector<string> commonChars(vector<string>& arr) {
+	   vector<int> hash1(26, 0);
+		vector<int> hash2(26, 0);
 
-        // Initialize the frequency map with the characters from the first word
-        for (auto a : words[0]) {
-            m[a]++;
-        }
+		for(auto ch : arr[0])
+		{
+			hash1[ch - 'a']++;
+		}
 
-        // Update the frequency map based on other words
-        for (int i = 1; i < words.size(); i++) {
-            unordered_map<char, int> temp;
-            for (auto a : words[i]) {
-                temp[a]++;
-            }
-            for (auto it = m.begin(); it != m.end(); ) {
-                if (temp.find(it->first) == temp.end()) {
-                    it = m.erase(it);
-                } else {
-                    it->second = min(it->second, temp[it->first]);
-                    ++it;
-                }
-            }
-        }
+		for(int i = 1; i < arr.size() ; i++)
+		{
+			for(auto ch : arr[i])
+			{
+				hash2[ch-'a']++;
+			}
 
-        // Add common characters to the answer vector
-        for (auto t : m) {
-            for (int i = 0; i < t.second; i++) {
-                ans.push_back(string(1, t.first));
-            }
-        }
+			for(int i = 0 ; i < 26 ; i++)
+			{
+				hash1[i] = min(hash1[i], hash2[i]);
+				hash2[i] = 0;
+			}
 
-        return ans;
-    }
+		}
+
+
+
+
+		vector<string> ans;
+		for(int i = 0 ; i < 26 ; i++)
+
+			if(hash1[i] > 0)
+			{
+				int count = hash1[i];
+				while(count--)
+				{
+					char x = i+ 'a';
+					string s ;
+					s = x;
+					ans.push_back(s);
+
+				}
+			}
+
+		return ans;
+	}
 };
