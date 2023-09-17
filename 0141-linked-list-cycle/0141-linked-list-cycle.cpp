@@ -14,10 +14,10 @@ public:
         while(head == NULL || head -> next == NULL){
             return false;
         }
-        while(fast != nullptr && fast->next != nullptr){
-             fast = fast->next->next;
-             slow = slow->next;
-             if(slow == fast) return true;
+        while(head != nullptr && head->next != nullptr){
+            head = head->next->next;
+            slow = slow->next;
+            if(slow == head) return true;
         }
         return false;
     }
