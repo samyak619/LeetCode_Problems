@@ -28,13 +28,13 @@ public:
         // delete temp;
         // return head;
         if (!head) {
-        return nullptr;  // Handle the case of an empty list
+        return nullptr;  
     }
 
     ListNode* fast = head;
     ListNode* slow = head;
     
-    ListNode* prev = nullptr; // To keep track of the node before slow
+    ListNode* prev = nullptr; 
 
     while (fast && fast->next) {
         fast = fast->next->next;
