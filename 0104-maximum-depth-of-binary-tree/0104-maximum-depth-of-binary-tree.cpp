@@ -12,18 +12,25 @@
 class Solution {
 public:
 
-    int maxHeight(TreeNode* root){
+    // int maxHeight(TreeNode* root){
+    //     if(root == nullptr) return 0;
+    //     else{
+    //         int left = maxHeight(root->left);
+    //         int right = maxHeight(root->right);
+    //         int ans = max(right, left);
+    //         return ans+1;
+    //     }
+    // }
+
+    int maxDepth(TreeNode* root) {
+        // int ans = maxHeight(root);
+        // return ans;
         if(root == nullptr) return 0;
         else{
-            int left = maxHeight(root->left);
-            int right = maxHeight(root->right);
+            int left = maxDepth(root->left);
+            int right = maxDepth(root->right);
             int ans = max(right, left);
             return ans+1;
         }
-    }
-
-    int maxDepth(TreeNode* root) {
-        int ans = maxHeight(root);
-        return ans;
     }
 };
