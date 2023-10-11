@@ -2,7 +2,7 @@ class Solution {
 public:
     void rotate(vector<vector<int>>& matrix) {
         int m = matrix.size();
-        int n = matrix[0].size();
+        // int n = matrix[0].size();
         // vector<vector<int>> transpose(n, vector<int>(m, 0));
         for(int i = 0; i < m; i++){
             for(int j = 0; j < i; j++){
@@ -17,7 +17,7 @@ public:
         //     // }
         //     reverse(matrix[i].begin(), matrix[i].end());
         // }
-        for(int row=0;row<n;row++){
+        for(int row=0;row<m;row++){
             reverse(matrix[row].begin(),matrix[row].end());
         }
     }
